@@ -1,15 +1,14 @@
----
+
 
 ## 🚀 **README.md — Projeto: Condições Salariais com Automation Anywhere**
 
-```md
 # 🤖 Projeto de Automação: Atualização Salarial com Condicionais no Excel
 
 **Autor:** Francisco Ferreira de Araujo  
 GitHub: https://github.com/araujofran  
 LinkedIn: https://www.linkedin.com/in/francisco-ferreira-de-araujo-1b432033/  
 
----
+
 
 ## 🎯 Objetivo do Projeto
 
@@ -22,7 +21,7 @@ O bot:
 - Aplica percentuais de aumento
 - Escreve o novo salário diretamente no Excel
 
----
+
 
 ## 📊 Estrutura dos Dados da Planilha
 
@@ -32,7 +31,7 @@ O bot:
 
 O **bot preenche a coluna "New Salary"** com os valores calculados.
 
----
+
 
 ## 🧠 Regras Condicionais Utilizadas
 
@@ -42,81 +41,81 @@ O **bot preenche a coluna "New Salary"** com os valores calculados.
 | **PicoTech** | +15% | +10% |
 | **MicroTech** | +5% | +5% |
 
----
+
 
 ## 🏗️ Fluxo do Bot — Passo a Passo Explicado
 
 A seguir, cada ação utilizada no projeto é detalhada com o motivo e o resultado esperado.
 
----
+
 
 ### ▶️ **1. Abrir o Excel**
-```
+
 
 Excel Advanced: Open "C:\Bots\universidadedevRPA\salaries.xlsx"
 
-```
+
 - Carrega o arquivo onde os dados serão lidos e escritos.
 
----
+
 
 ### 📍 **2. Posicionar na coluna New Salary**
-```
+
 
 Excel Advanced: Go to specific cell "E2"
 
-```
+
 - Preparação para escrita dos novos salários.
 
----
+
 
 ### 🔁 **3. Loop por cada linha da planilha**
-```
+
 
 Loop: For each row in worksheet assign to $rExcelRow$
 
-```
+
 - Permite processar linha a linha.
 - A variável `$rExcelRow$` contém os dados da linha atual.
 
----
+
 
 ### 🔡 **4–5. Remover caracteres inválidos do salário**
 #### 4️⃣ Substituir `$` por vazio
-```
+
 
 String: Substituir "$" por "" em $rExcelRow("Current Salary")$
 Saída: $sSalaryStep1$
 
-```
+
 #### 5️⃣ Substituir vírgula `,` por vazio
-```
+
 
 String: Substituir "," por "" em $sSalaryStep1$
 Saída: $sSalaryClean$
 
-```
+
 
 📌 Objetivo: deixar o número em formato **45678.00**, sem símbolo de moeda.
 
----
+
 
 ### 🔢 **6. Converter salário para Número**
-```
+
 
 String: Em número
 Entrada: $sSalaryClean$
 Saída: $nSalary$
 
-```
+
 Agora já é possível comparar valores numéricos no **IF**.
 
----
+
 
 ### ⚙️ **7–15: Aplicação das Regras Condicionais**
 
 #### 🟣 PicoTech
-```
+
 
 If $rExcelRow("Company")$ = "PicoTech"
 If $nSalary$ < 40000
@@ -124,18 +123,18 @@ $sSalary$ = $nSalary$ * 1.15
 Else
 $sSalary$ = $nSalary$ * 1.10
 
-```
+
 
 #### 🔵 MicroTech
-```
+
 
 Else If $rExcelRow("Company")$ = "MicroTech"
 $sSalary$ = $nSalary$ * 1.05
 
-```
+
 
 #### 🟢 NanoTech
-```
+
 
 Else If $rExcelRow("Company")$ = "NanoTech"
 If $nSalary$ < 40000
@@ -143,29 +142,25 @@ $sSalary$ = $nSalary$ * 1.10
 Else
 $sSalary$ = $nSalary$ * 1.05
 
-```
 
 📌 A variável utilizada para escrita é sempre `$sSalary$`.
 
----
+
 
 ### ✍️ **16. Escrever o novo salário no Excel**
-```
 
 Excel Advanced: Set cell = $sSalary$
 
-```
 
----
+
+
 
 ### ⬇️ **17. Avançar uma linha**
-```
+
 
 Excel Advanced: Go to next row
 
-```
 
----
 
 ## ❗ Problemas Encontrados e Soluções
 
@@ -180,7 +175,7 @@ Excel Advanced: Go to next row
 - Sanitização de strings
 - Execução em ordem correta das ações
 
----
+
 
 ## 📌 Tecnologias Utilizadas
 
@@ -190,7 +185,7 @@ Excel Advanced: Go to next row
 - Condições **If / Else If / Else**
 - Estrutura de **Loop**
 
----
+
 
 ### 🧾 Resultado Final — Salários Calculados pelo Bot
 
@@ -211,7 +206,7 @@ Abaixo está o resultado gerado após a aplicação automática das regras condi
 
 📌 Essa tabela é gerada automaticamente ao rodar o bot.
 
----
+
 ### 🧾 Resultado Final — Salários Calculados pelo Bot
 
 Após a execução completa da automação, os novos salários foram calculados conforme as regras condicionais:
@@ -230,9 +225,7 @@ Após a execução completa da automação, os novos salários foram calculados 
 | Seth | NanoTech | $38,192.00 | 10% | $42,011.20 |
 
 > Tabela gerada automaticamente a partir da execução do bot desenvolvido no Automation Anywhere.
-```
 
----
 
 ## 🧑‍💻 Autor
 
@@ -240,10 +233,9 @@ Após a execução completa da automação, os novos salários foram calculados 
 🔗 GitHub: https://github.com/araujofran  
 🔗 LinkedIn: https://www.linkedin.com/in/francisco-ferreira-de-araujo-1b432033/  
 
----
+
 
 Se este projeto foi útil para você, ⭐ **considere deixar uma estrela no repositório!**
 
-```
 
----
+
